@@ -23,7 +23,7 @@ public class FinalTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            GameOver();
+            StartCoroutine(GameOver());
         }
     }
 

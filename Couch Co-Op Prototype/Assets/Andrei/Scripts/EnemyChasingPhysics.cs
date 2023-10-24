@@ -31,10 +31,14 @@ public class EnemyChasingPhysics : MonoBehaviour
     }
     private void ChaseThePlayer()
     {
-        Vector3 tempVelocity = new Vector3((player.transform.position - transform.position).x, 0f, (player.transform.position - transform.position).z);
-        Quaternion targetRotation = Quaternion.LookRotation(tempVelocity);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        //Vector3 tempVelocity = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        //Quaternion targetRotation = Quaternion.LookRotation(tempVelocity);
 
-        rb.velocity = transform.forward * moveSpeed;
+        transform.LookAt(player.transform);
+        transform.rotation *= Quaternion.Euler(0f, 180f, 0f);
+
+       // transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+
+        rb.velocity = -1 * transform.forward * moveSpeed;
     }
 }
